@@ -1,5 +1,6 @@
 import Image from "next/image";
 import NavLinks from "./NavLinks";
+import Marquee from "./Marquee";
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "full",
@@ -41,6 +42,7 @@ const Header = () => {
         </div>
       </div>
       <NavLinks />
+      <Marquee />
     </header>
   );
 };
