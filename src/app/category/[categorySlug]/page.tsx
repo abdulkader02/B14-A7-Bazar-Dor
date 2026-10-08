@@ -14,7 +14,7 @@ interface Product {
   lastWeek: number;
   lastMonth: number;
   change: {
-    dir: "up" | "down" | "same";
+    dir: "up" | "down" | "flat";
     pct: number;
   };
 }
