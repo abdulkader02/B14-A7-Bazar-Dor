@@ -24,28 +24,28 @@ const Marquee = async () => {
       <div className="flex gap-8 whitespace-nowrap py-2">
         {products.map((product) => (
             <div
-            key={product.id}
+            key={product?.id}
             className="flex items-center gap-2 text-sm"
           >
-            <span>{product.image}</span>
+            <span>{product?.image}</span>
 
             <span className="font-medium">
-              {product.nameBn}
+              {product?.nameBn}
             </span>
 
             <span>
-              {product.today} টাকা/{product.unit}
+              {product?.today} টাকা/{product?.unit}
             </span>
 
             <span
               className={
-                product.change.dir === "up"
+                product?.change.dir === "up"
                   ? "text-red-500"
                   : "text-green-600"
               }
             >
-              {product.change.dir === "up" ? "▲" : "▼"}{" "}
-              {product.change.pct}%
+              {product?.change.dir === "up" ? "▲" : "▼"}{" "}
+              {product?.change.pct}%
             </span>
           </div>
         ))}

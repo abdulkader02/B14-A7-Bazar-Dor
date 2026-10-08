@@ -13,6 +13,7 @@ interface Category {
 
 const NavLinks = () => {
   const pathname = usePathname();
+
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -22,7 +23,12 @@ const NavLinks = () => {
           "https://api.api-store.workers.dev/api/bazardor/categories"
         );
 
+        if (!res.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+
         const data = await res.json();
+
         setCategories(data);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
@@ -34,23 +40,28 @@ const NavLinks = () => {
 
   return (
     <nav className="w-full border-t border-gray-100 bg-white">
-      <div className="mx-auto max-w-6xl overflow-x-auto px-4 sm:px-6">
-        <div className="flex min-w-max items-center gap-1 py-2">
-          {categories?.map((nav) => {
-            const isActive = pathname === `/${nav.slug}`;
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <div className="flex min-w-max items-center gap-1 overflow-x-auto py-2">
+          {categories.map((category) => {
+            const categoryPath = `/category/${category.slug}`;
+
+            const isActive =
+              pathname === categoryPath ||
+              pathname.startsWith(`${categoryPath}/`);
 
             return (
               <Link
-                key={nav.id}
-                href={`/${nav.slug}`}
-                className={`flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                key={category.id}
+                href={categoryPath}
+                className={`flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                   isActive
                     ? "bg-green-100 text-green-700"
                     : "text-gray-600 hover:bg-gray-100 hover:text-green-700"
                 }`}
               >
-                <span>{nav.icon}</span>
-                <span>{nav.nameBn}</span>
+                <span>{category.icon}</span>
+
+                <span>{category.nameBn}</span>
               </Link>
             );
           })}
