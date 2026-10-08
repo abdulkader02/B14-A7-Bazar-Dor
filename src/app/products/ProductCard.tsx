@@ -25,16 +25,16 @@ type ProductCardProps = {
 
 const toBengaliNumber = (num: number | string): string => {
   const bengaliDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-  return num.toString().replace(/\d/g, (digit) => bengaliDigits[parseInt(digit)]);
+  return num
+    .toString()
+    .replace(/\d/g, (digit) => bengaliDigits[parseInt(digit)]);
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const isPriceUp = product.change.dir === "up";
   const isPriceDown = product.change.dir === "down";
 
-  const changePercentage = toBengaliNumber(
-    product.change.pct.toFixed(1),
-  );
+  const changePercentage = toBengaliNumber(product.change.pct.toFixed(1));
 
   const todayPrice = toBengaliNumber(product.today);
 
@@ -45,9 +45,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
       : `—${changePercentage}%`;
 
   const changeBadgeClass = isPriceUp
-    ? "bg-green-50 text-green-600"
+    ? "bg-red-50 text-red-600"
     : isPriceDown
-      ? "bg-red-50 text-red-600"
+      ? "bg-green-50 text-green-600"
       : "bg-gray-100 text-gray-500";
 
   const unitText =
@@ -62,10 +62,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             : `প্রতি ${product.unit}`;
 
   return (
-    <Link
-      href={`/product/${product.slug}`}
-      className="group block"
-    >
+    <Link href={`/product/${product.slug}`} className="group block">
       <article
         className="
           h-full
@@ -114,24 +111,18 @@ const ProductCard = ({ product }: ProductCardProps) => {
               {product.nameBn}
             </h3>
 
-            <p className="mt-0.5 text-xs text-gray-500">
-              {unitText}
-            </p>
+            <p className="mt-0.5 text-xs text-gray-500">{unitText}</p>
           </div>
         </div>
 
         {/* Price section */}
         <div className="mt-5 flex items-end justify-between gap-3">
           <div>
-            <p className="text-xs text-gray-500">
-              আজকের দাম
-            </p>
+            <p className="text-xs text-gray-500">আজকের দাম</p>
 
             <p className="mt-1 text-lg font-bold text-gray-900 sm:text-xl">
               {todayPrice}{" "}
-              <span className="text-sm font-medium text-gray-600">
-                টাকা
-              </span>
+              <span className="text-sm font-medium text-gray-600">টাকা</span>
             </p>
           </div>
 

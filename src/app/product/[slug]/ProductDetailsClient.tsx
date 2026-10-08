@@ -66,11 +66,38 @@ export default function ProductDetailsClient({
 }: ProductDetailsClientProps) {
   const unitText = getUnitText(product.unit);
 
+  // Price difference from yesterday
   const priceDifference = Math.abs(
     product.today - product.yesterday,
   );
 
+  // Lowest market price
+  const lowestPrice = Math.min(
+    ...product.markets.map((market) => market.min),
+  );
+
+  // Highest market price
+  const highestPrice = Math.max(
+    ...product.markets.map((market) => market.max),
+  );
+
+  // Average price of all markets
+  const marketAverages = product.markets.map(
+    (market) => (market.min + market.max) / 2,
+  );
+
+  const averagePrice =
+    marketAverages.length > 0
+      ? marketAverages.reduce((sum, price) => sum + price, 0) /
+        marketAverages.length
+      : product.today;
+
+  // Bengali formatted values
   const bengaliPrice = toBengaliNumber(product.today);
+
+  const bengaliAveragePrice = toBengaliNumber(
+    Math.round(averagePrice),
+  );
 
   const bengaliPercentage = toBengaliNumber(
     product.change.pct.toFixed(1),
@@ -89,20 +116,9 @@ export default function ProductDetailsClient({
       ? `গতকালের তুলনায় আজ দাম কমেছে • ${bengaliDifference} টাকা`
       : "গতকালের তুলনায় আজ দাম অপরিবর্তিত";
 
-  const lowestPrice = Math.min(
-    ...product.markets.map((market) => market.min),
-  );
-
-  const highestPrice = Math.max(
-    ...product.markets.map((market) => market.max),
-  );
-
-  const averagePrice = product.today;
-
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:py-8">
-
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-gray-500">
           <div className="flex flex-wrap items-center gap-2">
@@ -133,8 +149,7 @@ export default function ProductDetailsClient({
         {/* Product Header */}
         <section className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6 lg:p-8">
           <div className="grid gap-6 lg:grid-cols-[1fr_320px] lg:items-center">
-
-            {/* Product information */}
+            {/* Product Information */}
             <div>
               <div className="flex items-start gap-4">
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-green-50 text-4xl">
@@ -162,6 +177,7 @@ export default function ProductDetailsClient({
                 </div>
               </div>
 
+              {/* Price Change */}
               <div className="mt-5">
                 <p
                   className={`text-sm font-medium ${
@@ -177,19 +193,19 @@ export default function ProductDetailsClient({
               </div>
             </div>
 
-            {/* Today's price */}
+            {/* Today's Price */}
             <div className="rounded-2xl bg-green-50 p-5 sm:p-6">
               <p className="text-sm font-medium text-gray-600">
                 আজকের দাম
               </p>
 
-              <div className="mt-2 flex items-baseline gap-2">
+              <div className="mt-2 flex flex-wrap items-baseline gap-2">
                 <span className="text-3xl font-bold text-gray-900 sm:text-4xl">
                   {bengaliPrice}
                 </span>
 
                 <span className="text-sm text-gray-600">
-                  টাকা / {product.unit}
+                  টাকা / {unitText.replace("প্রতি ", "")}
                 </span>
               </div>
 
@@ -221,7 +237,6 @@ export default function ProductDetailsClient({
           </h2>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-
             {/* Minimum */}
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
               <p className="text-sm text-gray-500">
@@ -265,14 +280,14 @@ export default function ProductDetailsClient({
               </p>
 
               <p className="mt-2 text-2xl font-bold text-gray-900">
-                {toBengaliNumber(averagePrice)}{" "}
+                {bengaliAveragePrice}{" "}
                 <span className="text-sm font-medium text-gray-500">
                   টাকা
                 </span>
               </p>
 
               <p className="mt-2 text-xs text-gray-500">
-                প্রতি {product.unit}-এর হিসেবে
+                বাজারগুলোর গড় দাম
               </p>
             </div>
           </div>
