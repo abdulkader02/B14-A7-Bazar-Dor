@@ -1,3 +1,5 @@
+## 🚀 Getting Started
+
 LIVE LINK :https://bazar-dh069c54l-abdul-kader1.vercel.app
 
 # 🛒 BazarDor — বাজার দর
@@ -34,10 +36,6 @@ BazarDor is designed to work across mobile, tablet, and desktop screens.
 - Mobile-friendly product details and category pages
 - Responsive authentication forms
 - Consistent spacing and layout
-
-## 🚀 Getting Started
-
-Open http://localhost:3000 in your browser.
 
 ## 📂 Main Routes
 
