@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
     return (
         <footer className="w-full border-t border-[#E1E8E1] bg-[#FAFCFA]">
-            <div className="mx-auto flex min-h-[68px] w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex min-h-[68px] w-full max-w-6xl flex-col items-start justify-between gap-3 px-4 py-4 sm:flex-row sm:items-center sm:gap-4 sm:px-6 lg:px-8">
                 
                 {/* Left */}
                 <p className="text-sm leading-5 text-[#1D271F]">

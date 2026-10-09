@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 BazarDor — বাজার দর
 
-## Getting Started
+**প্রয়োজনীয় পণ্যের দাম এক নজরে।**
 
-First, run the development server:
+BazarDor is a responsive web application that helps users explore the latest prices of essential products, compare price changes, browse products by category, and view market-wise price information. It provides a simple interface for tracking everyday market price.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Live Price Ticker** — Browse product prices and price changes in a scrolling ticker.
+2. **Product Price Overview** — Explore top price risers, top price fallers, and all available products.
+3. **Category-Based Browsing** — Browse products by category and sort them by price in ascending or descending order.
+4. **Product Details** — View product information, price summaries, and market-wise prices.
+5. **Authentication** — Sign up and sign in using email and password, Google, or GitHub through Better Auth.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js** — React framework with App Router
+- **React** — Component-based user interface
+- **TypeScript** — Type-safe development
+- **Tailwind CSS** — Responsive styling
+- **Better Auth** — Authentication and session management
+- **MongoDB** — Database for authentication data
+- **Sonner** — Toast notifications
+- **Vercel** — Deployment platform
 
-## Learn More
+## 📱 Responsive Design
 
-To learn more about Next.js, take a look at the following resources:
+BazarDor is designed to work across mobile, tablet, and desktop screens.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Responsive navigation and product ticker
+- Flexible product grids
+- Mobile-friendly product details and category pages
+- Responsive authentication forms
+- Consistent spacing and layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Getting Started
 
-## Deploy on Vercel
+Open http://localhost:3000 in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📂 Main Routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Route                      | Description                                      |
+| -------------------------- | ------------------------------------------------ |
+| `/`                        | Home page with price highlights and all products |
+| `/category/[categorySlug]` | Products filtered by category                    |
+| `/product/[slug]`          | Product details and market prices                |
+| `/signin`                  | Sign-in page                                     |
+| `/signup`                  | Registration page                                |
+| `/profile`                 | User profile                                     |
+
+## 🌐 Deployment
+
+The project can be deployed on [Vercel](https://vercel.com/).
+
+1. Push the project to GitHub.
+2. Import the repository into Vercel.
+3. Configure the required environment variables.
+4. Set the production authentication URL and OAuth callback URLs.
+5. Deploy and test the application.
+
+## ⚠️ Disclaimer
+
+All displayed prices are indicative and may change depending on market conditions.
+
+## 👨‍💻 Author
+
+**Abdul Kader Khan**
+
+Frontend Developer.
