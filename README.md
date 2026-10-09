@@ -1,3 +1,5 @@
+LIVE LINK :https://bazar-dh069c54l-abdul-kader1.vercel.app
+
 # 🛒 BazarDor — বাজার দর
 
 **প্রয়োজনীয় পণ্যের দাম এক নজরে।**
