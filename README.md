@@ -1,6 +1,6 @@
 ## 🚀 Getting Started
 
-LIVE LINK :https://bazar-dh069c54l-abdul-kader1.vercel.app
+LIVE LINK :https://bazar-dor-pi-hazel.vercel.app/
 
 # 🛒 BazarDor — বাজার দর
 
